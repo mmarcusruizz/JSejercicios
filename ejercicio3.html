@@ -35,7 +35,29 @@
         </div>
     </div>
     <script>
-    // Escríbe aquí tu código
+        // Se obtienen referencias a los elementos del DOM
+        const valor1Input = document.getElementById('valor1');
+        const valor2Input = document.getElementById('valor2');
+        const resultadoSpan = document.querySelector('.resultado');
+        const btnSumar = document.getElementById('btn-sumar');
+        const btnRestar = document.getElementById('btn-restar');
+
+        // Se agrega un evento click al botón "Sumar" y se realiza la suma con su resultado
+        btnSumar.addEventListener('click', () => {
+            // Se obtienen los valores de los inputs y se convierten a números
+            const valor1 = parseFloat(valor1Input.value);
+            const valor2 = parseFloat(valor2Input.value);
+            const resultado = valor1 + valor2;
+            resultadoSpan.textContent = resultado;
+        });
+
+        // Se agrega un evento click al botón "Restar", y se realiza la suma y resultado
+        btnRestar.addEventListener('click', () => {
+            const valor1 = parseFloat(valor1Input.value);
+            const valor2 = parseFloat(valor2Input.value);
+            const resultado = Math.max(0, valor1 - valor2); // Asegurar que el resultado no sea negativo
+            resultadoSpan.textContent = resultado;
+        });
     </script>
 </body>
 
