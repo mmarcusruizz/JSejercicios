@@ -47,7 +47,41 @@
         </div>
     </div>
     <script>
-    // Escríbe aquí tu código
+        // Se obtienen referencias del html según su ID y classes
+        const formulario = document.getElementById('formulario');
+        const nombreInput = document.getElementById('nombre');
+        const asuntoInput = document.getElementById('asunto');
+        const errorNombre = document.querySelector('.errorNombre');
+        const errorAsunto = document.querySelector('.errorAsunto');
+        const resultado = document.querySelector('.resultado');
+
+        // expresión regular para validar que solo se ingresen letras
+        const regexAlfabetico = /^[a-zA-Z]+$/; 
+
+        formulario.addEventListener('submit', (event) => {
+            event.preventDefault(); // Evita el envío del formulario por defecto
+
+            // se resetean los mensajes de error
+            errorNombre.textContent = '';
+            errorAsunto.textContent = '';
+            resultado.textContent = '';
+
+            // Validación de los campos
+            if (!regexAlfabetico.test(nombreInput.value)) {
+                errorNombre.textContent = 'El nombre debe contener solo letras.';
+                return;
+            }
+
+            if (!regexAlfabetico.test(asuntoInput.value)) {
+                errorAsunto.textContent = 'El asunto debe contener solo letras.';
+                return;
+            }
+
+            // Si la validación pasa envía los datos
+            resultado.textContent = 'Formulario enviado correctamente.';
+            
+        });
+
     </script>
 </body>
 
